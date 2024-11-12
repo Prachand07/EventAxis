@@ -1,4 +1,4 @@
-EventAxis: Centralizing Campus Events
+<b>EventAxis: Centralizing Campus Events</b> <br>
 Helps you centralize your campus events, with features such as viewing past and upcoming events, login/registrations features as well ability for clubs and committees to register for events
 
 Try it yourself!
