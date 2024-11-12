@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class StudentRegisterServlet extends HttpServlet {
     
     private static final String DB_URL = "jdbc:mysql://database:3306/EventDB";
-    private static final String DB_USER = "root1"; 
+    private static final String DB_USER = "root"; 
     private static final String DB_PASSWORD = "Aarush@2004"; 
 
     @Override
