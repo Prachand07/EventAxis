@@ -91,13 +91,13 @@
 
     <div id="formContainer">
         <div id="loginForm">
-            <form>
+             <form id="loginForm" action="adminlogin" method="POST">
                 <h3>Login Here</h3>
-                <label for="username">Username</label>
-                <input type="text" placeholder="Enter Username" id="username" required>
+                <label for="username">Email</label>
+                <input type="text" placeholder="Enter Email" id="email" name="email" required>
 
                 <label for="password">Password</label>
-                <input type="password" placeholder="Password" id="password" required>
+                <input type="password" placeholder="Password" id="password" name="password" required>
 
                 <button type="submit">Log In</button>
                 

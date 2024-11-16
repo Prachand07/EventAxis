@@ -30,7 +30,7 @@ public class EventServlet extends HttpServlet {
         try {
             
             Class.forName("com.mysql.cj.jdbc.Driver"); 
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/EventDB", "root", "Aarush@2004"); 
+            conn = DriverManager.getConnection("jdbc:mysql://database:3306/EventDB", "root", "Aarush@2004"); 
 
             
             String sql = "INSERT INTO events (event_name, event_description, event_date,category) VALUES (?, ?, ?, ?)";

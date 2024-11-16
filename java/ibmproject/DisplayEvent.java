@@ -30,7 +30,7 @@ public class DisplayEvent extends HttpServlet {
             out.println("<html><body>");
             out.println("<h2>Event Search Results</h2>");
 
-            // Load MySQL JDBC driver
+     
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
@@ -54,9 +54,9 @@ public class DisplayEvent extends HttpServlet {
         }
     }
 
-    // Handle event search by name
+    
     private void displayEventByName(PrintWriter out, Connection connection, String eventName) throws SQLException {
-        String query = "SELECT * FROM events WHERE event_name LIKE ?";
+        String query = "SELECT id, event_name, event_description, event_date, category FROM events WHERE event_name LIKE ? and approved=1 ";
         
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, "%" + eventName + "%");
@@ -71,9 +71,9 @@ public class DisplayEvent extends HttpServlet {
         }
     }
 
-    // Handle event search by category
+   
     private void displayEventByCategory(PrintWriter out, Connection connection, String category) throws SQLException {
-        String query = "SELECT * FROM events WHERE category = ?";
+        String query = "SELECT id, event_name, event_description, event_date,category FROM events WHERE category = ? AND approved=1";
         
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, category);
@@ -88,9 +88,9 @@ public class DisplayEvent extends HttpServlet {
         }
     }
 
-    // Display all events when no search criteria are provided
+   
     private void displayAllEvents(PrintWriter out, Connection connection) throws SQLException {
-        String query = "SELECT * FROM events";
+        String query = "SELECT id, event_name, event_description, event_date, category FROM events where approved=1";
         
         try (PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -103,17 +103,16 @@ public class DisplayEvent extends HttpServlet {
         }
     }
 
-    // Method to display the events in a table format
+    
     private void displayEventTable(PrintWriter out, ResultSet resultSet) throws SQLException {
         out.println("<table border='1' cellpadding='5' cellspacing='0'>");
-        out.println("<tr><th>S.No</th><th>Event Name</th><th>Description</th><th>Event Date</th><th>Committee</th><th>Category</th></tr>");
+        out.println("<tr><th>S.No</th><th>Event Name</th><th>Description</th><th>Event Date</th><th>Category</th></tr>");
         while (resultSet.next()) {
             out.println("<tr>");
             out.println("<td>" + resultSet.getString("id") + "</td>");
             out.println("<td>" + resultSet.getString("event_name") + "</td>");
             out.println("<td>" + resultSet.getString("event_description") + "</td>");
             out.println("<td>" + resultSet.getString("event_date") + "</td>");
-            out.println("<td>" + resultSet.getString("committee_name") + "</td>");
             out.println("<td>" + resultSet.getString("category") + "</td>");
             out.println("</tr>");
         }

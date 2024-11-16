@@ -9,7 +9,7 @@
     <title>EventAxis</title>
     <link rel="stylesheet" href="eventdisplay.css"> 
     <style>
-    /* Targeting the select element with ID 'category' */
+   
 #category {
     padding: 1rem;
     margin-bottom: 1.5rem;
@@ -67,12 +67,12 @@
                 <select id="category" name="category">
                     <option value="">All Categories</option>
                     <option value="music">Music</option>
-                    <option value="tech">Technology</option>
+                    <option value="technology">Technology</option>
                     <option value="art">Art</option>
-                    <option value="sports">Sports</option>
+                    <option value="sport">Sport</option>
                     <option value="education">Education</option>
                     <option value="health">Health</option>
-                    <!-- Add more categories as needed -->
+                    
                 </select>
 
                 <div class="button-group">

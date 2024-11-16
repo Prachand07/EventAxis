@@ -35,7 +35,7 @@ public class PastupcomingServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)) {
-                String query = "SELECT event_name, event_description, event_date, event_category FROM events ORDER BY event_date";
+                String query = "SELECT event_name, event_description, event_date, category FROM events where approved=1 ORDER BY event_date";
                 try (Statement stmt = conn.createStatement();
                      ResultSet rs = stmt.executeQuery(query)) {
 
@@ -43,7 +43,7 @@ public class PastupcomingServlet extends HttpServlet {
                         String eventName = rs.getString("event_name");
                         String eventDescription = rs.getString("event_description");
                         Date eventDate = rs.getDate("event_date");
-                        String eventcategory = rs.getString("event_category");
+                        String eventcategory = rs.getString("category");
                         
                         ListEvent event = new ListEvent(eventName, eventDescription, eventDate, eventcategory);
 
