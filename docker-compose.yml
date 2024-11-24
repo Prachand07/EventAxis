@@ -1,0 +1,23 @@
+services:
+  database:
+    image: prachand7/eventaxis:ea_db
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: Aarush@2004     
+      MYSQL_DATABASE: EventDB             
+    ports:
+      - "3306:3306"                       
+
+  frontend:
+    image: prachand7/eventaxis:ea_web
+    container_name: frontend
+    ports:
+      - "80:8080"                       
+    depends_on:
+      - database                           
+    environment:
+      DB_URL: jdbc:mysql://database:3306/EventDB   
+      DB_USER: root
+      DB_PASSWORD: Aarush@2004
+    links:
+      - database                           
