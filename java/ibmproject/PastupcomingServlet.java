@@ -26,7 +26,7 @@ public class PastupcomingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<ListEvent> events = new ArrayList<>();
 
-        // Check if the user requested past or upcoming events
+        
         String action = request.getParameter("action");
         boolean isPast = "past".equals(action);
 
@@ -68,10 +68,10 @@ public class PastupcomingServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        // Check if any events were added
+      
         System.out.println("Total Events Found: " + events.size());
 
-        // Pass the filtered events to the JSP
+        
         request.setAttribute("events", events);
         request.getRequestDispatcher("/pastup.jsp").forward(request, response);
     }

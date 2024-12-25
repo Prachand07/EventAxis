@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/AdminServlet")
 public class AdminServlet extends HttpServlet {
-    private static final String JDBC_URL = "jdbc:mysql://database:3306/eventdb";
+    private static final String JDBC_URL = "jdbc:mysql://database:3306/EventDB";
     private static final String JDBC_USERNAME = "root";
     private static final String JDBC_PASSWORD = "Aarush@2004";
 

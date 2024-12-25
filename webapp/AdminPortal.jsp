@@ -31,7 +31,7 @@
         <h1>Admin Portal</h1>
         <div class="event-list">
             <%
-                String jdbcURL = "jdbc:mysql://database:3306/eventdb";
+                String jdbcURL = "jdbc:mysql://database:3306/EventDB";
                 String jdbcUsername = "root";
                 String jdbcPassword = "Aarush@2004";
 
@@ -60,22 +60,25 @@
                     <div class="event-title"><%= eventName %></div>
                     <div class="event-date"><%= eventDate %></div>
                 </div>
-                <div class="event-actions">
-                    <% if (approved == 0) { %>
-                        <form method="post" action="AdminServlet">
-                            <input type="hidden" name="eventId" value="<%= id %>">
-                            <input type="hidden" name="action" value="approve">
-                            <button type="submit" class="btn btn-approve">Approve</button>
-                        </form>
-                        <form method="post" action="AdminServlet">
-                            <input type="hidden" name="eventId" value="<%= id %>">
-                            <input type="hidden" name="action" value="reject">
-                            <button type="submit" class="btn btn-reject">Reject</button>
-                        </form>
-                    <% } else { %>
-                        <span>Approved</span>
-                    <% } %>
-                </div>
+               <div class="event-actions">
+    <% if (approved == 0) { %>
+        <form method="post" action="AdminServlet">
+            <input type="hidden" name="eventId" value="<%= id %>">
+            <input type="hidden" name="action" value="approve">
+            <button type="submit" class="btn btn-approve">Approve</button>
+        </form>
+        <form method="post" action="AdminServlet">
+            <input type="hidden" name="eventId" value="<%= id %>">
+            <input type="hidden" name="action" value="reject">
+            <button type="submit" class="btn btn-reject">Reject</button>
+        </form>
+    <% } else if (approved == -1) { %>
+        <span>Rejected</span>
+    <% } else { %>
+        <span>Approved</span>
+    <% } %>
+</div>
+               
             </div>
             <%
                     }
